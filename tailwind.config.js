@@ -9,7 +9,7 @@ export default {
           iconbackground: "rgba(3, 129, 255, 0.10)",
           background: "#FBFCFC",
           border: "#0381ff",
-          borderInactive: "#00000014",
+          borderInactive: "#00000028",
         },
       },
     },

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, AnimationControls, motion } from "framer-motion";
 import { borderAnimation } from "../../animations";
 
 export interface IconProps {
@@ -14,8 +14,8 @@ const useIcons = () => {
         height='56'
         viewBox='0 0 56 56'
         fill='none'>
-        <circle cx='28' cy='28' r='28' fill='transparent' />
-        <circle cx='28' cy='28' r='27.5' stroke='#666666' strokeOpacity='0.8' />
+        <circle cx='28' cy='28' r='28' fill='white' />
+        <circle cx='28' cy='28' r='27.5' stroke='#00000014' strokeOpacity='1' />
       </svg>
     );
   };
@@ -30,17 +30,18 @@ const useIcons = () => {
           viewBox='0 0 56 56'
           fill='transparent'>
           <circle cx='28' cy='28' r='28' fill='white' />
+
           <motion.circle
             cx='28'
             cy='28'
             r='27.5'
             stroke='#0381ff'
             strokeOpacity='1'
+            strokeWidth='2'
             initial='hidden'
             animate='show'
-            variants={borderAnimation}
             exit='exit'
-            transition={{ duration: 5 }}
+            variants={borderAnimation}
           />
         </svg>
       </AnimatePresence>
