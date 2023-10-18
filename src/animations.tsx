@@ -23,6 +23,7 @@ export const borderAnimation = {
   },
   show: {
     pathLength: 1,
+    pathOffset: 2,
     transition: {
       duration: 0.6,
     },
@@ -116,6 +117,7 @@ export const batchScanAnimation3 = {
     },
   },
 };
+
 export const advancedFilterAnimation1 = {
   hidden: {
     opacity: 0,
@@ -148,3 +150,4 @@ export const advancedFilterAnimation2 = {
     },
   },
 };
+
