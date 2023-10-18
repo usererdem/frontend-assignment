@@ -2,6 +2,8 @@ import { motion, useAnimationControls } from "framer-motion";
 import { useEffect } from "react";
 import {
   batchScanAnimation,
+  batchScanAnimation2,
+  batchScanAnimation3,
   batchScanContainerAnimation,
   phoneAnimation,
 } from "../animations";
@@ -38,29 +40,17 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
           <>
             <motion.div
               id='batch-scan-container'
-              className='overflow-hidden'
+              className='overflow-hidden absolute left-0 top-0'
               variants={batchScanContainerAnimation}
               initial='hidden'
               animate='show'>
-              <motion.div
-                className=''
-                variants={batchScanAnimation}
-                initial='hidden'
-                animate={{ y: 100 }}>
+              <motion.div className='' variants={batchScanAnimation}>
                 <img src='src/assets/images/FilePreview.png'></img>
               </motion.div>
-              <motion.div
-                className=''
-                variants={batchScanAnimation}
-                initial='hidden'
-                animate={{ y: 200 }}>
+              <motion.div variants={batchScanAnimation2}>
                 <img src='src/assets/images/FilePreview.png'></img>
               </motion.div>
-              <motion.div
-                className=''
-                variants={batchScanAnimation}
-                initial='hidden'
-                animate={{ y: 300 }}>
+              <motion.div className='' variants={batchScanAnimation3}>
                 <img src='src/assets/images/FilePreview.png'></img>
               </motion.div>
             </motion.div>
