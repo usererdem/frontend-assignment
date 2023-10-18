@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeIndex, setActiveIndex }) => {
         {contents.map((content, i) => (
           <button onClick={() => setActiveIndex(i)}>
             <li
-              className={`py-6 px-4 text-lg transition-colors duration-500 flex items-center justify-center gap-4 md:py-8 md:px-14  ${
+              className={`py-8 pr-8 pl-20 text-lg transition-colors duration-500 flex items-center justify-center gap-4 md:pr-14 md:pl-24 ${
                 activeIndex === i && "bg-primary-iconbackground"
               } ${
                 i === 0
@@ -66,14 +66,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeIndex, setActiveIndex }) => {
                   : "snap-center border-r"
               }`}>
               <div className='relative'>
-                <div className='absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 z-50'>
+                <div className='absolute -left-6 top-0  -translate-x-1/2 -translate-y-1/2 z-50'>
                   {content.icon(activeIndex === i ? "#0582ff" : "#666666")}
                 </div>
-                <div className='absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2'>
+                <div className='absolute -left-6 top-0 -translate-x-1/2 -translate-y-1/2'>
                   <BorderSvg />
                 </div>
                 {activeIndex === i && (
-                  <div className='transform -rotate-90 absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2'>
+                  <div className='transform -rotate-90 absolute -left-6 top-0 -translate-x-1/2 -translate-y-1/2'>
                     <ActiveBorderSvg  />
                   </div>
                 )}
