@@ -97,28 +97,14 @@ export const signStampAnimation2 = {
 };
 
 /* BATCHSCAN ANIMATIONS */
-export const batchScanContainerAnimation = {
-  show: {
-    transition: {
-      staggerChildren: 0.4,
-    },
-  },
-};
-
-const travelCalculation = (value: number) => {
-  return value - 280;
-};
-
-const startingY: number = 300;
-
 export const batchScanAnimation1 = {
   hidden: {
-    y: "100%",
-    scale: 0.8,
+    y: 500,
+    scale: 1,
   },
   show: {
-    y: travelCalculation(startingY),
-    scale: 0.6,
+    y: 90,
+    scale: 0.8,
     transition: {
       delay: phoneAnimationDuration,
       duration: 0.6,
@@ -127,12 +113,12 @@ export const batchScanAnimation1 = {
 };
 export const batchScanAnimation2 = {
   hidden: {
-    y: "100%",
+    y: 500,
     scale: 1,
   },
   show: {
-    y: travelCalculation(startingY - 230),
-    scale: 0.7,
+    y: -220,
+    scale: 0.9,
     transition: {
       delay: phoneAnimationDuration + 0.2,
       duration: 0.6,
@@ -141,11 +127,53 @@ export const batchScanAnimation2 = {
 };
 export const batchScanAnimation3 = {
   hidden: {
-    y: "100%",
+    y: 500,
     scale: 1,
   },
   show: {
-    y: travelCalculation(startingY - 460),
+    y: -530,
+    scale: 1,
+    transition: {
+      delay: phoneAnimationDuration + 0.4,
+      duration: 0.8,
+    },
+  },
+};
+export const batchScanMobileAnimation1 = {
+  hidden: {
+    y: 300,
+    scale: 0.8,
+  },
+  show: {
+    y: 22,
+    scale: 0.6,
+    transition: {
+      delay: phoneAnimationDuration,
+      duration: 0.4,
+    },
+  },
+};
+export const batchScanMobileAnimation2 = {
+  hidden: {
+    y: 300,
+    scale: 0.9,
+  },
+  show: {
+    y: -210,
+    scale: 0.7,
+    transition: {
+      delay: phoneAnimationDuration + 0.2,
+      duration: 0.6,
+    },
+  },
+};
+export const batchScanMobileAnimation3 = {
+  hidden: {
+    y: 300,
+    scale: 1,
+  },
+  show: {
+    y: -440,
     scale: 0.8,
     transition: {
       delay: phoneAnimationDuration + 0.4,

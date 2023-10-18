@@ -1,4 +1,4 @@
-import { AnimatePresence, AnimationControls, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { borderAnimation } from "../../animations";
 
 export interface IconProps {
