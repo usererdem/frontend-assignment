@@ -1,7 +1,8 @@
 // Navbar.js
 import { useMemo } from "react";
 import useIcons from "./Icons/use-icons";
-
+import { useAtomValue } from "jotai";
+import { controlsAtom } from "../state/atom";
 
 type NavbarProps = {
   activeIndex: number;
@@ -50,11 +51,20 @@ const Navbar: React.FC<NavbarProps> = ({ activeIndex, setActiveIndex }) => {
     ]
   );
 
+  const controls = useAtomValue(controlsAtom);
+
+  const handleButtonClick = async (index: number) => {
+    await controls?.start("exit");
+    setActiveIndex(index);
+    await controls?.start("hidden");
+    controls?.start("show");
+  };
+
   return (
     <nav className='overflow-x-auto -webkit-overflow-scrolling-touch scrollbar-hide snap-x snap-mandatory scroll-smooth flex justify-center'>
       <ul className='flex whitespace-nowrap font-semibold w-full md:justify-center'>
         {contents.map((content, i) => (
-          <button onClick={() => setActiveIndex(i)}>
+          <button onClick={() => handleButtonClick(i)} key={"nav-button-" + i}>
             <li
               className={`py-8 pr-8 pl-20 text-lg transition-colors duration-500 flex items-center justify-center gap-4 md:pr-14 md:pl-24 ${
                 activeIndex === i && "bg-primary-iconbackground"
@@ -74,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeIndex, setActiveIndex }) => {
                 </div>
                 {activeIndex === i && (
                   <div className='transform -rotate-90 absolute -left-6 top-0 -translate-x-1/2 -translate-y-1/2'>
-                    <ActiveBorderSvg  />
+                    <ActiveBorderSvg />
                   </div>
                 )}
               </div>

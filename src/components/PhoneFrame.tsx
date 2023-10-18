@@ -1,12 +1,10 @@
-import { motion, useAnimationControls } from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   advancedFilterAnimation1,
   advancedFilterAnimation2,
   batchScanAnimation1,
   batchScanAnimation2,
   batchScanAnimation3,
-  batchScanContainerAnimation,
   phoneAnimation,
   ArrowIconAnimation,
   exportShareAnimation1,
@@ -14,8 +12,15 @@ import {
   exportShareAnimation3,
   signStampAnimation1,
   signStampAnimation2,
+  batchScanMobileAnimation1,
+  batchScanMobileAnimation2,
+  batchScanMobileAnimation3,
 } from "../animations";
 import useIcons from "./Icons/use-icons";
+import { useAtomValue } from "jotai";
+import { controlsAtom } from "../state/atom";
+import { useBreakpoint } from "use-breakpoint";
+import { BREAKPOINTS } from "../constants/breakpoints";
 
 export type PhoneFrameProps = {
   imageUrl: string;
@@ -33,17 +38,9 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
     JpgDocumentIcon,
     ArrowIcon,
   } = useIcons();
-  const controls = useAnimationControls();
 
-  const runAnimation = async () => {
-    await controls.start("exit");
-    await controls.start("hidden");
-    controls.start("show");
-  };
-
-  useEffect(() => {
-    runAnimation();
-  }, [props.id]);
+  const controls = useAtomValue(controlsAtom);
+  const { breakpoint } = useBreakpoint(BREAKPOINTS);
 
   return (
     <div className='flex justify-center w-full md:max-w-[50%] h-[280px] lg:h-[480px] mx-auto overflow-hidden'>
@@ -62,7 +59,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               <motion.div
                 variants={signStampAnimation1}
                 className=' -left-16 top-1/2 absolute md:-left-24'>
-                {window.innerWidth <= 768 ? (
+                {breakpoint === "mobile" ? (
                   <img src='src/assets/images/SignStampiconMobile.png'></img>
                 ) : (
                   <img src='src/assets/images/SignStampicon.png'></img>
@@ -71,7 +68,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               <motion.div
                 variants={signStampAnimation2}
                 className='absolute -right-16 top-1/3 md:-right-[92px]'>
-                {window.innerWidth <= 768 ? (
+                {breakpoint === "mobile" ? (
                   <img src='src/assets/images/SignStampiconMobile2.png'></img>
                 ) : (
                   <img src='src/assets/images/SignStampicon2.png'></img>
@@ -80,69 +77,73 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
             </motion.div>
           </>
         )}
-        
+
         {/* BATCH SCAN */}
         {props.id === 3 && (
           <>
-            <motion.div
-              id='batch-scan-container'
-              className='overflow-hidden absolute'
-              variants={batchScanContainerAnimation}
-              initial='hidden'
-              animate='show'>
-              <motion.div variants={batchScanAnimation1}>
+            <div id='batch-scan-container' className='overflow-hidden absolute'>
+              <motion.div
+                variants={
+                  breakpoint === "mobile"
+                    ? batchScanMobileAnimation1
+                    : batchScanAnimation1
+                }>
                 <img src='src/assets/images/FilePreview.png'></img>
               </motion.div>
-              <motion.div variants={batchScanAnimation2}>
+              <motion.div
+                variants={
+                  breakpoint === "mobile"
+                    ? batchScanMobileAnimation2
+                    : batchScanAnimation2
+                }>
                 <img src='src/assets/images/FilePreview.png'></img>
               </motion.div>
-              <motion.div variants={batchScanAnimation3}>
+              <motion.div
+                variants={
+                  breakpoint === "mobile"
+                    ? batchScanMobileAnimation3
+                    : batchScanAnimation3
+                }>
                 <img src='src/assets/images/FilePreview.png'></img>
               </motion.div>
-            </motion.div>
+            </div>
           </>
         )}
 
         {/* ADVANCED FILTER */}
         {props.id === 4 && (
           <>
-            <motion.div
+            <div
               id='advanced-filter-container'
-              className='overflow-hidden flex'
-              variants={batchScanContainerAnimation}
-              initial='hidden'
-              animate='show'>
+              className='overflow-hidden flex'>
               <motion.div
-                className='absolute -left-5 top-1/2 -translate-y-1/3'
+                className='absolute -left-5 top-1/2 -translate-y-[36%]'
                 variants={advancedFilterAnimation1}>
-                {window.innerWidth <= 768 ? (
+                {breakpoint === "mobile" ? (
                   <BrightnessSliderIconMobile />
                 ) : (
                   <BrightnessSliderIcon />
                 )}
               </motion.div>
               <motion.div
-                className='absolute -right-5 top-1/2 -translate-y-1/3'
+                className='absolute -right-5 top-1/2 -translate-y-[36%]'
                 variants={advancedFilterAnimation2}>
-                {window.innerWidth <= 768 ? (
+                {breakpoint === "mobile" ? (
                   <ContrastSliderIconMobile />
                 ) : (
                   <ContrastSliderIcon />
                 )}
               </motion.div>
-            </motion.div>
+            </div>
           </>
         )}
 
         {/* EXPORT AND SHARE */}
         {props.id === 5 && (
           <>
-            <motion.div
+            <div
               id='export-and-share-container'
-              className='overflow-hidden flex'
-              variants={batchScanContainerAnimation}
-              initial='hidden'
-              animate='show'>
+              className='overflow-hidden flex'>
               <motion.div
                 className='absolute -left-6 bottom-2 w-[14px] md:w-5'
                 variants={ArrowIconAnimation}>
@@ -163,7 +164,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
                 variants={exportShareAnimation3}>
                 <TxtDocumentIcon />
               </motion.div>
-            </motion.div>
+            </div>
           </>
         )}
       </motion.div>
