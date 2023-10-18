@@ -1,12 +1,57 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { borderAnimation } from "../../animations";
-import { useEffect, useState } from "react";
 
 export interface IconProps {
   fill?: string;
 }
 
 const useIcons = () => {
+  const BorderSvg = () => {
+    return (
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='56'
+        height='56'
+        viewBox='0 0 56 56'
+        fill='none'>
+        <circle cx='28' cy='28' r='28' fill='transparent' />
+        <circle
+          cx='28'
+          cy='28'
+          r='27.5'
+          stroke='#666666'
+          stroke-opacity='0.8'
+        />
+      </svg>
+    );
+  };
+
+  const ActiveBorderSvg = () => {
+    return (
+      <AnimatePresence>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='56'
+          height='56'
+          viewBox='0 0 56 56'
+          fill='transparent'>
+          <circle cx='28' cy='28' r='28' fill='white' />
+          <motion.circle
+            cx='28'
+            cy='28'
+            r='27.5'
+            stroke='#0381ff'
+            stroke-opacity='0.08'
+            initial='hidden'
+            animate='show'
+            variants={borderAnimation}
+            exit='exit'
+            transition={{ duration: 5 }}
+          />
+        </svg>
+      </AnimatePresence>
+    );
+  };
   const DocumentScannerIcon = ({ fill = "#0381FF" }: IconProps) => {
     return (
       <svg
@@ -529,72 +574,12 @@ const useIcons = () => {
     );
   };
 
-  const BorderSvg = () => {
-    return (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='56'
-        height='56'
-        viewBox='0 0 56 56'
-        fill='none'>
-        <circle cx='28' cy='28' r='28' fill='transparent' />
-        <circle
-          cx='28'
-          cy='28'
-          r='27.5'
-          stroke='#666666'
-          stroke-opacity='0.8'
-        />
-      </svg>
-    );
-  };
-
-  const ActiveBorderSvg = () => {
-    return (
-      <AnimatePresence>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='56'
-          height='56'
-          viewBox='0 0 56 56'
-          fill='transparent'>
-          <circle cx='28' cy='28' r='28' fill='white' />
-          <motion.circle
-            cx='28'
-            cy='28'
-            r='27.5'
-            stroke='#0381ff'
-            stroke-opacity='0.08'
-            initial='hidden'
-            animate='show'
-            variants={borderAnimation}
-            exit='exit'
-            transition={{ duration: 5 }}
-          />
-        </svg>
-      </AnimatePresence>
-    );
-  };
-
   const PdfDocumentIcon = () => {
-    const [isMobile, setIsMobile] = useState<boolean>();
-
-    useEffect(() => {
-      function handleResize() {
-        setIsMobile(window.innerWidth >= 768);
-      }
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
-
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        width={isMobile ? "104" : "182"}
-        height={isMobile ? "114" : "194"}
+        width='100%'
+        height='100%'
         viewBox='0 0 160 181'
         fill='none'>
         <g filter='url(#filter0_d_896_1324)'>
@@ -686,8 +671,8 @@ const useIcons = () => {
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        width='130'
-        height='156'
+        width='100%'
+        height='100%'
         viewBox='0 0 130 156'
         fill='none'>
         <g filter='url(#filter0_d_896_1354)'>
@@ -779,8 +764,8 @@ const useIcons = () => {
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        width='159'
-        height='187'
+        width='100%'
+        height='100%'
         viewBox='0 0 159 187'
         fill='none'>
         <g filter='url(#filter0_d_896_1339)'>
@@ -872,8 +857,8 @@ const useIcons = () => {
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        width='24'
-        height='34'
+        width='100%'
+        height='100%'
         viewBox='0 0 24 34'
         fill='none'>
         <path
@@ -1171,6 +1156,7 @@ const useIcons = () => {
       </svg>
     );
   };
+
   return {
     DocumentScannerIcon,
     SignStampIcon,

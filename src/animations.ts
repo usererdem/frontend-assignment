@@ -23,6 +23,7 @@ export const borderAnimation = {
   },
   show: {
     pathLength: 1,
+    pathOffset: 2,
     transition: {
       duration: 0.6,
     },
@@ -60,6 +61,41 @@ export const phoneAnimation = {
   },
 };
 
+/* SIGN & STAMP ANIMATIONS */
+export const signStampAnimation1 = {
+  hidden: {
+    scale: 0,
+    transition: {
+      duration: 0,
+      when: "afterChildren",
+    },
+  },
+  show: {
+    scale: 1,
+    transition: {
+      delay: 1,
+      duration: 0.4,
+    },
+  },
+};
+export const signStampAnimation2 = {
+  hidden: {
+    scale: 0,
+    transition: {
+      duration: 0,
+      when: "afterChildren",
+    },
+  },
+  show: {
+    scale: 1,
+    transition: {
+      delay: 1.4,
+      duration: 0.4,
+    },
+  },
+};
+
+/* BATCHSCAN ANIMATIONS */
 export const batchScanContainerAnimation = {
   show: {
     transition: {
@@ -116,6 +152,8 @@ export const batchScanAnimation3 = {
     },
   },
 };
+
+/* ADVANCED FILTER ANIMATIONS */
 export const advancedFilterAnimation1 = {
   hidden: {
     opacity: 0,
@@ -145,6 +183,64 @@ export const advancedFilterAnimation2 = {
     transition: {
       delay: 1.2,
       duration: 0.6,
+    },
+  },
+};
+
+/* EXPORT AND SHARE ANIMATIONS */
+export const ArrowIconAnimation = {
+  hidden: {
+    y: 300,
+    x: 300,
+  },
+  show: {
+    y: 0,
+    x: 0,
+    transition: {
+      delay: 0.3,
+      duration: 1,
+    },
+  },
+};
+export const exportShareAnimation1 = {
+  hidden: {
+    y: 300,
+    x: 130,
+  },
+  show: {
+    y: 0,
+    x: 0,
+    transition: {
+      delay: 1,
+      duration: 0.5,
+    },
+  },
+};
+export const exportShareAnimation2 = {
+  hidden: {
+    y: 300,
+    x: -65,
+  },
+  show: {
+    y: -30,
+    x: -65,
+    transition: {
+      delay: 1.2,
+      duration: 0.5,
+    },
+  },
+};
+export const exportShareAnimation3 = {
+  hidden: {
+    y: 300,
+    x: -230,
+  },
+  show: {
+    y: 0,
+    x: 0,
+    transition: {
+      delay: 1.4,
+      duration: 0.5,
     },
   },
 };
