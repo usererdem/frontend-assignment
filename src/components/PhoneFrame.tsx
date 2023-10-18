@@ -1,5 +1,4 @@
-import { motion, useAnimationControls } from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   advancedFilterAnimation1,
   advancedFilterAnimation2,
@@ -16,6 +15,8 @@ import {
   signStampAnimation2,
 } from "../animations";
 import useIcons from "./Icons/use-icons";
+import { useAtomValue } from "jotai";
+import { controlsAtom } from "../state/atom";
 
 export type PhoneFrameProps = {
   imageUrl: string;
@@ -33,17 +34,8 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
     JpgDocumentIcon,
     ArrowIcon,
   } = useIcons();
-  const controls = useAnimationControls();
 
-  const runAnimation = async () => {
-    await controls.start("exit");
-    await controls.start("hidden");
-    controls.start("show");
-  };
-
-  useEffect(() => {
-    runAnimation();
-  }, [props.id]);
+  const controls = useAtomValue(controlsAtom);
 
   return (
     <div className='flex justify-center w-full md:max-w-[50%] h-[280px] lg:h-[480px] mx-auto overflow-hidden'>
@@ -80,7 +72,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
             </motion.div>
           </>
         )}
-        
+
         {/* BATCH SCAN */}
         {props.id === 3 && (
           <>
@@ -113,7 +105,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               initial='hidden'
               animate='show'>
               <motion.div
-                className='absolute -left-5 top-1/2 -translate-y-1/3'
+                className='absolute -left-5 top-1/2 -translate-y-[36%]'
                 variants={advancedFilterAnimation1}>
                 {window.innerWidth <= 768 ? (
                   <BrightnessSliderIconMobile />
@@ -122,7 +114,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
                 )}
               </motion.div>
               <motion.div
-                className='absolute -right-5 top-1/2 -translate-y-1/3'
+                className='absolute -right-5 top-1/2 -translate-y-[36%]'
                 variants={advancedFilterAnimation2}>
                 {window.innerWidth <= 768 ? (
                   <ContrastSliderIconMobile />

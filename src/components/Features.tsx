@@ -1,9 +1,11 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import HeroContent from "../components/HeroContent";
 import PhoneFrame from "./PhoneFrame";
 import { FeatureContent } from "../models/feature";
+import { useAtom } from "jotai";
+import { controlsAtom } from "../state/atom";
+import { useAnimationControls } from "framer-motion";
 
 const contents: FeatureContent[] = [
   {
@@ -49,7 +51,17 @@ const contents: FeatureContent[] = [
 ];
 
 const Features = () => {
+  const globalControls = useAnimationControls();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [controls, setControls] = useAtom(controlsAtom);
+
+  useEffect(() => {
+    setControls(globalControls);
+  });
+  useEffect(() => {
+    controls?.start("show");
+  }, [controls]);
+
   return (
     <>
       <div className='flex flex-col justify-end max-w-[1440px] pt-16 px-6 md:pt-32 md:px-16 lg:px-32 md:flex-row-reverse md:mx-auto md:justify-center md:items-start md:text-right '>
