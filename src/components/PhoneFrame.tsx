@@ -1,8 +1,9 @@
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect } from "react";
 import {
-  advancedFilterAnimation,
-  batchScanAnimation,
+  advancedFilterAnimation1,
+  advancedFilterAnimation2,
+  batchScanAnimation1,
   batchScanAnimation2,
   batchScanAnimation3,
   batchScanContainerAnimation,
@@ -52,7 +53,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               variants={batchScanContainerAnimation}
               initial='hidden'
               animate='show'>
-              <motion.div variants={batchScanAnimation}>
+              <motion.div variants={batchScanAnimation1}>
                 <img src='src/assets/images/FilePreview.png'></img>
               </motion.div>
               <motion.div variants={batchScanAnimation2}>
@@ -74,20 +75,20 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               animate='show'>
               <motion.div
                 className='absolute -left-5 top-1/2 -translate-y-1/3'
-                variants={advancedFilterAnimation}>
-                {window.innerWidth >= 768 ? (
-                  <BrightnessSliderIcon />
-                ) : (
+                variants={advancedFilterAnimation1}>
+                {window.innerWidth <= 768 ? (
                   <BrightnessSliderIconMobile />
+                ) : (
+                  <BrightnessSliderIcon />
                 )}
               </motion.div>
               <motion.div
                 className='absolute -right-5 top-1/2 -translate-y-1/3'
-                variants={advancedFilterAnimation}>
-                {window.innerWidth >= 768 ? (
-                  <ContrastSliderIcon />
-                ) : (
+                variants={advancedFilterAnimation2}>
+                {window.innerWidth <= 768 ? (
                   <ContrastSliderIconMobile />
+                ) : (
+                  <ContrastSliderIcon />
                 )}
               </motion.div>
             </motion.div>

@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { borderAnimation } from "../../animations";
+import { useEffect, useState } from "react";
 
 export interface IconProps {
   fill?: string;
@@ -576,11 +577,24 @@ const useIcons = () => {
   };
 
   const PdfDocumentIcon = () => {
+    const [isMobile, setIsMobile] = useState<boolean>();
+
+    useEffect(() => {
+      function handleResize() {
+        setIsMobile(window.innerWidth >= 768);
+      }
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+
     return (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        width='160'
-        height='181'
+        width={isMobile ? "104" : "182"}
+        height={isMobile ? "114" : "194"}
         viewBox='0 0 160 181'
         fill='none'>
         <g filter='url(#filter0_d_896_1324)'>

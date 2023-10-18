@@ -69,12 +69,12 @@ export const batchScanContainerAnimation = {
 };
 
 const travelCalculation = (value: number) => {
-  return value - 280
-}
+  return value - 280;
+};
 
-const startingY:number = 300;
+const startingY: number = 300;
 
-export const batchScanAnimation  = {
+export const batchScanAnimation1 = {
   hidden: {
     y: startingY,
     scale: 0.8,
@@ -88,13 +88,13 @@ export const batchScanAnimation  = {
     },
   },
 };
-export const batchScanAnimation2  = {
+export const batchScanAnimation2 = {
   hidden: {
     y: startingY,
     scale: 1,
   },
   show: {
-    y: travelCalculation(startingY-230),
+    y: travelCalculation(startingY - 230),
     scale: 0.7,
     transition: {
       delay: 1.2,
@@ -102,13 +102,13 @@ export const batchScanAnimation2  = {
     },
   },
 };
-export const batchScanAnimation3  = {
+export const batchScanAnimation3 = {
   hidden: {
     y: startingY,
     scale: 1,
   },
   show: {
-    y: travelCalculation(startingY-460),
+    y: travelCalculation(startingY - 460),
     scale: 0.8,
     transition: {
       delay: 1.2,
@@ -116,7 +116,7 @@ export const batchScanAnimation3  = {
     },
   },
 };
-export const advancedFilterAnimation  = {
+export const advancedFilterAnimation1 = {
   hidden: {
     opacity: 0,
     transition: {
@@ -127,9 +127,24 @@ export const advancedFilterAnimation  = {
   show: {
     opacity: 1,
     transition: {
+      delay: 1,
       duration: 0.6,
     },
   },
 };
-
-
+export const advancedFilterAnimation2 = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 0,
+      when: "afterChildren",
+    },
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      delay: 1.2,
+      duration: 0.6,
+    },
+  },
+};
