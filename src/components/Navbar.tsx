@@ -64,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeIndex, setActiveIndex }) => {
     <nav className='overflow-x-auto -webkit-overflow-scrolling-touch scrollbar-hide snap-x snap-mandatory scroll-smooth flex justify-center'>
       <ul className='flex whitespace-nowrap font-semibold w-full md:justify-center'>
         {contents.map((content, i) => (
-          <button onClick={() => handleButtonClick(i)}>
+          <button onClick={() => handleButtonClick(i)} key={"nav-button-" + i}>
             <li
               className={`py-8 pr-8 pl-20 text-lg transition-colors duration-500 flex items-center justify-center gap-4 md:pr-14 md:pl-24 ${
                 activeIndex === i && "bg-primary-iconbackground"
