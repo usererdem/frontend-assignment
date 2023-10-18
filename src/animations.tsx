@@ -68,51 +68,68 @@ export const batchScanContainerAnimation = {
   },
 };
 
+const travelCalculation = (value: number) => {
+  return value - 280
+}
+
+const startingY:number = 300;
+
 export const batchScanAnimation  = {
   hidden: {
-    y: 300,
-    transition: {
-      duration: 0,
-      when: "afterChildren",
-    },
+    y: startingY,
+    scale: 0.8,
   },
   show: {
-    y: 20,
+    y: travelCalculation(startingY),
     scale: 0.6,
     transition: {
-      duration: 0.4,
+      delay: 1,
+      duration: 0.6,
     },
   },
 };
 export const batchScanAnimation2  = {
   hidden: {
-    y: 0,
-    transition: {
-      duration: 0,
-      when: "afterChildren",
-    },
+    y: startingY,
+    scale: 1,
   },
   show: {
-    y: -210,
+    y: travelCalculation(startingY-230),
     scale: 0.7,
     transition: {
+      delay: 1.2,
       duration: 0.6,
     },
   },
 };
 export const batchScanAnimation3  = {
   hidden: {
-    y: 0,
+    y: startingY,
+    scale: 1,
+  },
+  show: {
+    y: travelCalculation(startingY-460),
+    scale: 0.8,
+    transition: {
+      delay: 1.2,
+      duration: 1,
+    },
+  },
+};
+export const advancedFilterAnimation  = {
+  hidden: {
+    opacity: 0,
     transition: {
       duration: 0,
       when: "afterChildren",
     },
   },
   show: {
-    y: -440,
-    scale: 0.8,
+    opacity: 1,
     transition: {
       duration: 0.6,
     },
   },
 };
+
+
