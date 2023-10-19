@@ -30,7 +30,6 @@ const HeroContent: React.FC<HeroContentProps> = (props) => {
           {props.description}
         </p>
       </div>
-
       <div className='flex justify-center md:justify-end'>
         <button className='flex justify-center items-center px-5 py-[15px] cursor-pointer text-dark border border-primary-borderInactive font-semibold'>
           Learn More

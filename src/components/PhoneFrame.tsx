@@ -58,8 +58,10 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
             <motion.div>
               <motion.div
                 variants={signStampAnimation1}
-                className=' -left-16 top-1/2 absolute md:-left-24'>
+                className=' -left-16 top-1/2 absolute lg:-left-24'>
                 {breakpoint === "mobile" ? (
+                  <img src='src/assets/images/SignStampiconMobile.png'></img>
+                ) : breakpoint === "tablet" ? (
                   <img src='src/assets/images/SignStampiconMobile.png'></img>
                 ) : (
                   <img src='src/assets/images/SignStampicon.png'></img>
@@ -67,8 +69,10 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               </motion.div>
               <motion.div
                 variants={signStampAnimation2}
-                className='absolute -right-16 top-1/3 md:-right-[92px]'>
+                className='absolute -right-16 top-1/3 lg:-right-[92px]'>
                 {breakpoint === "mobile" ? (
+                  <img src='src/assets/images/SignStampiconMobile2.png'></img>
+                ) : breakpoint === "tablet" ? (
                   <img src='src/assets/images/SignStampiconMobile2.png'></img>
                 ) : (
                   <img src='src/assets/images/SignStampicon2.png'></img>
@@ -81,10 +85,12 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
         {/* BATCH SCAN */}
         {props.id === 3 && (
           <>
-            <div id='batch-scan-container' className='overflow-hidden absolute'>
+            <div id='batch-scan-container' className='overflow-hidden absolute z-50'>
               <motion.div
                 variants={
                   breakpoint === "mobile"
+                    ? batchScanMobileAnimation1
+                    : breakpoint === "tablet"
                     ? batchScanMobileAnimation1
                     : batchScanAnimation1
                 }>
@@ -94,6 +100,8 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
                 variants={
                   breakpoint === "mobile"
                     ? batchScanMobileAnimation2
+                    : breakpoint === "tablet"
+                    ? batchScanMobileAnimation2
                     : batchScanAnimation2
                 }>
                 <img src='src/assets/images/FilePreview.png'></img>
@@ -101,6 +109,8 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               <motion.div
                 variants={
                   breakpoint === "mobile"
+                    ? batchScanMobileAnimation3
+                    : breakpoint === "tablet"
                     ? batchScanMobileAnimation3
                     : batchScanAnimation3
                 }>
@@ -117,9 +127,11 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               id='advanced-filter-container'
               className='overflow-hidden flex'>
               <motion.div
-                className='absolute -left-5 top-1/2 -translate-y-[36%]'
+                className='absolute -left-5 top-1/2 -translate-y-[36%] z-50'
                 variants={advancedFilterAnimation1}>
                 {breakpoint === "mobile" ? (
+                  <BrightnessSliderIconMobile />
+                ) : breakpoint === "tablet" ? (
                   <BrightnessSliderIconMobile />
                 ) : (
                   <BrightnessSliderIcon />
@@ -129,6 +141,8 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
                 className='absolute -right-5 top-1/2 -translate-y-[36%]'
                 variants={advancedFilterAnimation2}>
                 {breakpoint === "mobile" ? (
+                  <ContrastSliderIconMobile />
+                ) : breakpoint === "tablet" ? (
                   <ContrastSliderIconMobile />
                 ) : (
                   <ContrastSliderIcon />
@@ -145,22 +159,22 @@ const PhoneFrame: React.FC<PhoneFrameProps> = (props) => {
               id='export-and-share-container'
               className='overflow-hidden flex'>
               <motion.div
-                className='absolute -left-6 bottom-2 w-[14px] md:w-5'
+                className='absolute -left-6 bottom-2 w-[14px] lg:w-5'
                 variants={ArrowIconAnimation}>
                 <ArrowIcon />
               </motion.div>
               <motion.div
-                className='absolute -left-8 bottom-0 w-[104px] md:w-40'
+                className='absolute -left-8 bottom-0 w-[104px] lg:w-40'
                 variants={exportShareAnimation1}>
                 <PdfDocumentIcon />
               </motion.div>
               <motion.div
-                className='absolute left-[60%] md:left-[50%] bottom-0 md:bottom-2  w-[82px] md:w-32'
+                className='absolute left-[60%] bottom-0 md:bottom-2 w-[82px] lg:left-[50%] lg:w-32'
                 variants={exportShareAnimation2}>
                 <JpgDocumentIcon />
               </motion.div>
               <motion.div
-                className='absolute -right-8 bottom-0 w-[94px] md:w-[9.5rem]'
+                className='absolute -right-8 bottom-0 w-[94px] lg:w-[9.5rem]'
                 variants={exportShareAnimation3}>
                 <TxtDocumentIcon />
               </motion.div>
