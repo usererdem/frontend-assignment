@@ -7,7 +7,7 @@ export const contentAnimation = {
       duration: 0,
     },
   },
-  show: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } },
   exit: {
     opacity: 0,
     transition: {
@@ -40,7 +40,7 @@ export const borderAnimation = {
 
 export const phoneAnimation = {
   hidden: {
-    y: "100%",
+    y: '100%',
     opacity: 1,
     transition: {
       duration: 0,
@@ -51,7 +51,7 @@ export const phoneAnimation = {
     opacity: 1,
     transition: {
       duration: phoneAnimationDuration,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
   },
   exit: {
@@ -68,7 +68,7 @@ export const signStampAnimation1 = {
     scale: 0,
     transition: {
       duration: 0,
-      when: "afterChildren",
+      when: 'afterChildren',
     },
   },
   show: {
@@ -84,7 +84,7 @@ export const signStampAnimation2 = {
     scale: 0,
     transition: {
       duration: 0,
-      when: "afterChildren",
+      when: 'afterChildren',
     },
   },
   show: {
@@ -188,7 +188,7 @@ export const advancedFilterAnimation1 = {
     opacity: 0,
     transition: {
       duration: 0,
-      when: "afterChildren",
+      when: 'afterChildren',
     },
   },
   show: {
@@ -204,7 +204,7 @@ export const advancedFilterAnimation2 = {
     opacity: 0,
     transition: {
       duration: 0,
-      when: "afterChildren",
+      when: 'afterChildren',
     },
   },
   show: {

@@ -76,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveIndex }) => {
               <div className="relative">
                 <div className="absolute -left-6 top-0  -translate-x-1/2 -translate-y-1/2 z-50">
                   {content.icon(
-                    navbarActiveIndex === i ? '#0582ff' : '#666666'
+                    navbarActiveIndex === i ? '#0582ff' : '#666666',
                   )}
                 </div>
                 <div className="absolute -left-6 top-0 -translate-x-1/2 -translate-y-1/2">

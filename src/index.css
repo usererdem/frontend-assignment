@@ -1,17 +1,19 @@
+/* stylelint-disable */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  
   body {
     max-height: 100vh;
   }
 }
+/* stylelint-enable */
 
 .class {
   color: #0582ff;
 }
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -19,12 +21,7 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  scrollbar-width: none; /* Firefox */
+
+  -ms-overflow-style: none; /* IE and Edge */
 }
-
-
-
-
-
-
