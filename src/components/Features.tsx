@@ -1,57 +1,81 @@
-import phone from "../assets/images/documentScanner.png";
-import HeroContent, { HeroContentProps } from "../components/HeroContent";
-import { useState } from "react";
-import Navbar from "./Navbar";
+import { useEffect, useState } from 'react';
+import Navbar from './Navbar';
+import HeroContent from '../components/HeroContent';
+import PhoneFrame from './PhoneFrame';
+import { FeatureContent } from '../models/feature';
+import { useAtom } from 'jotai';
+import { controlsAtom } from '../state/atom';
+import { useAnimationControls } from 'framer-motion';
 
-const contents: HeroContentProps[] = [
+const contents: FeatureContent[] = [
   {
-    name: "Document Scanner",
-    title: "Scan with Ease",
+    id: 1,
+    name: 'Document Scanner',
+    title: 'Scan with Ease',
     description:
-      "Scan any document instantly with your mobile device by just a few steps. Save as PDF,JPG,ZIP,TXT and Word format.",
+      'Scan any document instantly with your mobile device by just a few steps. Save as PDF,JPG,ZIP,TXT and Word format.',
+    imageUrl: 'src/assets/images/documentScanner.png',
+  },
+
+  {
+    id: 2,
+    name: 'SIGN & STAMP',
+    title: 'One-Tap Focus',
+    description:
+      'Draw, scan or import your signature and stamp with a simple touch. Sign and stamp any document with just a single tap!',
+    imageUrl: 'src/assets/images/signStamp.png',
   },
   {
-    name: "SIGN & STAMP",
-    title: "One-Tap Focus",
+    id: 3,
+    name: 'BATCH SCANNING',
+    title: 'Multiple Page Scan',
     description:
-      "Draw, scan or import your signature and stamp with a simple touch. Sign and stamp any document with just a single tap!",
+      'Scan multiple pages or documents in multiple-scanning mode. Batch all scans as a single document.',
+    imageUrl: 'src/assets/images/batchScan.png',
   },
   {
-    name: "BATCH SCANNING",
-    title: "Multiple Page Scan",
+    id: 4,
+    name: 'ADVANCED FILTERS',
+    title: 'Unique Filters',
     description:
-      "Scan multiple pages or documents in multiple-scanning mode. Batch all scans as a single document.",
+      'Apply advanced filters and enhance quality with various custom made filters. Manually edit brightness and contrast by your own choice on the custom filters.',
+    imageUrl: 'src/assets/images/advancedFilters.png',
   },
   {
-    name: "ADVANCED FILTERS",
-    title: "Unique Filters",
-    description:
-      "Apply advanced filters and enhance quality with various custom made filters. Manually edit brightness and contrast by your own choice on the custom filters.",
-  },
-  {
-    name: "EXPORT & SHARE",
-    title: "All-Round Conversion",
-    description: "Export your scans as PDF,JPG,ZIP,TXT and Word.",
+    id: 5,
+    name: 'EXPORT & SHARE',
+    title: 'All-Round Conversion',
+    description: 'Export your scans as PDF,JPG,ZIP,TXT and Word.',
+    imageUrl: 'src/assets/images/exportShare.png',
   },
 ];
 
 const Features = () => {
+  const globalControls = useAnimationControls();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [controls, setControls] = useAtom(controlsAtom);
+
+  useEffect(() => {
+    setControls(globalControls);
+  });
+  useEffect(() => {
+    void controls?.start('show');
+  }, [controls]);
+
   return (
     <>
-      <div className='flex flex-col justify-end max-w-[1440px] pt-16 px-6 md:pt-32 md:px-16 lg:px-32 md:flex-row-reverse md:justify-center md:items-start md:text-right '>
+      <div className="flex flex-col justify-end max-w-[1440px] pt-16 px-6 md:pt-32 md:px-16 lg:px-32 md:flex-row-reverse md:mx-auto md:justify-center md:items-start md:text-right ">
         <HeroContent
           name={contents[activeIndex].name}
           title={contents[activeIndex].title}
           description={contents[activeIndex].description}
         />
-        <div className='flex justify-center w-full md:max-w-[50%] h-[280px] lg:h-[480px] mx-auto'>
-          <div className='relative flex flex-shrink-0 h-full'>
-            <img className='h-full' src={phone} alt='' />
-          </div>
-        </div>
+        <PhoneFrame
+          imageUrl={contents[activeIndex].imageUrl}
+          id={contents[activeIndex].id}
+        />
       </div>
-      <Navbar activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      <Navbar setActiveIndex={setActiveIndex} />
     </>
   );
 };
