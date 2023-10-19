@@ -59,7 +59,7 @@ const Features = () => {
     setControls(globalControls);
   });
   useEffect(() => {
-    controls?.start("show");
+     void controls?.start("show");
   }, [controls]);
 
   return (
