@@ -75,7 +75,7 @@ const Features = () => {
           id={contents[activeIndex].id}
         />
       </div>
-      <Navbar activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      <Navbar setActiveIndex={setActiveIndex} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { borderAnimation } from "../../animations";
 
 export interface IconProps {
@@ -22,29 +22,26 @@ const useIcons = () => {
 
   const ActiveBorderSvg = () => {
     return (
-      <AnimatePresence>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='56'
-          height='56'
-          viewBox='0 0 56 56'
-          fill='transparent'>
-          <circle cx='28' cy='28' r='28' fill='white' />
-
-          <motion.circle
-            cx='28'
-            cy='28'
-            r='27.5'
-            stroke='#0381ff'
-            strokeOpacity='1'
-            strokeWidth='2'
-            initial='hidden'
-            animate='show'
-            exit='exit'
-            variants={borderAnimation}
-          />
-        </svg>
-      </AnimatePresence>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='56'
+        height='56'
+        viewBox='0 0 56 56'
+        fill='transparent'>
+        <circle cx='28' cy='28' r='28' fill='white' />
+        <motion.circle
+          cx='28'
+          cy='28'
+          r='27.5'
+          stroke='#0381ff'
+          strokeOpacity='1'
+          strokeWidth='2'
+          initial='hidden'
+          animate='show'
+          exit='exit'
+          variants={borderAnimation}
+        />
+      </svg>
     );
   };
   const DocumentScannerIcon = ({ fill = "#0381FF" }: IconProps) => {

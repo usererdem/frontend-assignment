@@ -27,13 +27,13 @@ export const borderAnimation = {
     pathLength: 1,
     pathOffset: 2,
     transition: {
-      duration: 0.7,
+      duration: 0.6,
     },
   },
   exit: {
     pathLength: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.6,
     },
   },
 };
