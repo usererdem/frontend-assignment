@@ -1,5 +1,4 @@
-import "./App.css";
-import Features from "./components/Features";
+import Features from './components/Features';
 
 function App() {
   return (
