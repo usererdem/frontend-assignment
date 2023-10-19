@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import useIcons from "./Icons/use-icons";
 import { useAtomValue } from "jotai";
 import { controlsAtom } from "../state/atom";
+import { AnimatePresence } from "framer-motion";
 
 type NavbarProps = {
   activeIndex: number;
@@ -54,6 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeIndex, setActiveIndex }) => {
   const controls = useAtomValue(controlsAtom);
 
   const handleButtonClick = async (index: number) => {
+    // navbar index change
     await controls?.start("exit");
     setActiveIndex(index);
     await controls?.start("hidden");
@@ -82,11 +84,13 @@ const Navbar: React.FC<NavbarProps> = ({ activeIndex, setActiveIndex }) => {
                 <div className='absolute -left-6 top-0 -translate-x-1/2 -translate-y-1/2'>
                   <BorderSvg />
                 </div>
-                {activeIndex === i && (
-                  <div className='transform -rotate-90 absolute -left-6 top-0 -translate-x-1/2 -translate-y-1/2'>
-                    <ActiveBorderSvg />
-                  </div>
-                )}
+                <AnimatePresence>
+                  {activeIndex === i && (
+                    <div className='transform -rotate-90 absolute -left-6 top-0 -translate-x-1/2 -translate-y-1/2'>
+                      <ActiveBorderSvg key={"active-border-" + i} />
+                    </div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {content.label}

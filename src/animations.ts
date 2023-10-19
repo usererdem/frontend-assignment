@@ -33,7 +33,7 @@ export const borderAnimation = {
   exit: {
     pathLength: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.3,
     },
   },
 };
